@@ -87,22 +87,21 @@ namespace Projet2Chess
             coord2.Add("8", 7);
 
             string caract1, caract2;
-            int nb1, nb2;
+            int nb1 = 0, nb2 = 0;
             bool valide, verif;
-            Coordonnee maCoord;
 
             caract1 = coordonneeADecortiquer.Substring(0, 1).ToUpper();
             caract2 = coordonneeADecortiquer.Substring(1, 1);
             verif = coord1.TryGetValue(caract1, out nb1);
             valide = coord2.TryGetValue(caract2, out nb2);
-            if (valide && verif)
+            if (verif && valide && coordonneeADecortiquer.Length == 2)
             {
-                maCoord = new Coordonnee(nb1, nb2);
-                return maCoord;
+                return new Coordonnee(nb1, nb2);
             }
             else
             {
-                return null;
+                DemanderCoordonnees("Entrez la coordonnée de la pièce que vous voulez bouger : ");
+                return new Coordonnee(nb1, nb2);
             }
             //throw new NotImplementedException();
         }
