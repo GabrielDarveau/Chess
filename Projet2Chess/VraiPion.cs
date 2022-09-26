@@ -27,33 +27,36 @@ namespace Projet2Chess
              *      SI la colone est plus grande que 1
              *          SI la position en Y+mouvement X+1 est occupée par un ennemi
              *              ajouter cette position a la liste
-             *      SI la colone est plus petite que 7
+             *      SI la colone est plus petite que 8
              *          SI la position en Y+ mouvement X-1 est occupée par un ennemi
              *               ajouter cette position a la liste
              *          
             */
             List<Coordonnee> coordonneesValides = new List<Coordonnee>();
-            int mouvement = -1, range = 7;
+            int mouvement = -1, range = 6;
             ConsoleColor couleur = ConsoleColor.Black;
             if (this.couleurPiece == ConsoleColor.White)
             {
                 couleur = ConsoleColor.White;
                 mouvement = 1;
-                range = 2;
+                range = 1;
             }
 
-            if (maPosition.Y < 8 && maPosition.Y > 1)
+            if (maPosition.Y < 7 && maPosition.Y > 0)
             {
                 if (VerifCaseVide(maPosition.X, maPosition.Y + mouvement))
                 {
-                    if (maPosition.Y == range) VerifCaseVide(maPosition.X, (maPosition.Y + mouvement) + mouvement);
+                    if (maPosition.Y == range)
+                    {
+                        VerifCaseVide(maPosition.X, (maPosition.Y + mouvement) + mouvement);
+                    }
                 }
 
-                if (maPosition.X < 1)
+                if (maPosition.X < 7)
                 {
                     VerifCaseEnnemie(maPosition.X + 1, maPosition.Y + mouvement);
                 }
-                if (maPosition.X > 7)
+                if (maPosition.X > 0)
                 {
                     VerifCaseEnnemie(maPosition.X - 1, maPosition.Y + mouvement);
                 }
