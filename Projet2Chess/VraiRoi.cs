@@ -19,7 +19,8 @@ namespace Projet2Chess
         /// <returns></returns>
         public override List<Coordonnee> DeterminerPositionsValides(Piece[,] lePlateau, Coordonnee maPosition)
         {
-            /*  int mouvement = -1
+            /*  
+             *  int mouvement = -1
              *  SI la couleur est blanche
              *      mouvement = 1
              *  SI la position en haut N'est pas de la meme couleur
