@@ -69,7 +69,7 @@ namespace Projet2Chess
                         coordonneesValides.Add(caseAutour);
                     }
                 }
-                catch (Exception e)
+                catch (IndexOutOfRangeException e)
                 {
                     
                 }
