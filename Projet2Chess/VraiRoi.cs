@@ -11,6 +11,12 @@ namespace Projet2Chess
         public VraiRoi(ConsoleColor laCouleur) : base(laCouleur)
         { }
 
+        /// <summary>
+        /// détermine toutes les cases valide pour le roi en regardant le plateau
+        /// </summary>
+        /// <param name="lePlateau"></param>
+        /// <param name="maPosition"></param>
+        /// <returns></returns>
         public override List<Coordonnee> DeterminerPositionsValides(Piece[,] lePlateau, Coordonnee maPosition)
         {
             /*  int mouvement = -1
@@ -35,6 +41,7 @@ namespace Projet2Chess
              */
 
             List<Coordonnee> coordonneesValides = new List<Coordonnee>();
+            //Ajoute toutes les cases autour du roi dans une liste
             List<Coordonnee> cases = new List<Coordonnee>();
             cases.Add(new Coordonnee(maPosition.X, maPosition.Y+1));
             cases.Add(new Coordonnee(maPosition.X+1, maPosition.Y+1));
@@ -47,11 +54,13 @@ namespace Projet2Chess
 
             ConsoleColor couleur = this.couleurPiece;
 
+            //Vérifie chaque case autour du roi
             foreach (Coordonnee caseAutour in cases)
             {
                 VerifCase(caseAutour);
             }
 
+            //vérifie si une case est occuper par un allié, si non, la case est valide et est ajoutée à la liste
             void VerifCase(Coordonnee caseAutour)
             {
                 try
