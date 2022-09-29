@@ -13,270 +13,142 @@ namespace Projet2Chess
 
         public override List<Coordonnee> DeterminerPositionsValides(Piece[,] lePlateau, Coordonnee maPosition)
         {
-            /* valide : Booléen
-             * Si la couleur est blanc
-             *      Faire
-             *          Si la case du haut est vide et qu'elle est dans les limites du plateau
+            /*      Pour la colonne vers le haut à partir de la position
+             *          Si la case du haut est vide
              *              Ajouter cette case à la liste des positions valides
-             *              valide = vrai
-             *          Sinon si la case du haut n'est pas vide et que la couleur est noir
+             *          Sinon si la case du haut n'est pas vide et que la couleur de la pièce est enemie
              *              Ajouter cette case à la liste des positions valides
-             *              valide = faux
+             *              Sortir
              *          Sinon
-             *              valide = faux
-             *      Tant que valide = vrai
+             *              Sortir
              *      
-             *      Faire
-             *          Si la case du bas est vide et qu'elle est dans les limites du plateau
+             *      Pour la colonne à partir vers le bas de la position
+             *          Si la case du bas est vide
              *              Ajouter cette case à la liste des positions valides
-             *              valide = vrai
-             *          Sinon si la case du bas n'est pas vide et que la couleur est noir
+             *          Sinon si la case du bas n'est pas vide et que la couleur de la pièce est enemie
              *              Ajouter cette case à la liste des positions valides
-             *              valide = faux
+             *              Sortir
              *          Sinon
-             *              valide = faux
-             *      Tant que valide = vrai
+             *              Sortir
              *      
-             *      Faire
-             *          Si la case de droite est vide et qu'elle est dans les limites du plateau
+             *      Pour la ligne vers la droite à partir de la position
+             *          Si la case de droite est vide
              *              Ajouter cette case à la liste des positions valides
-             *              valide = vrai
-             *          Sinon si la case de droite n'est pas vide et que la couleur est noir
+             *          Sinon si la case de droite n'est pas vide et que la couleur de la pièce est enemie
              *              Ajouter cette case à la liste des positions valides
-             *              valide = faux
+             *              Sortir
              *          Sinon
-             *              valide = faux
-             *      Tant que valide = vrai
-             *      
-             *      Faire
-             *          Si la case de gauche est vide et qu'elle est dans les limites du plateau
+             *              Sortir
+             *              
+             *      Pour la ligne vers la gauche
+             *          Si la case de gauche est vide
              *              Ajouter cette case à la liste des positions valides
-             *              valide = vrai
-             *          Sinon si la case de gauche n'est pas vide et que la couleur est noir
+             *          Sinon si la case de gauche n'est pas vide et que la couleur de la pièce est enemie
              *              Ajouter cette case à la liste des positions valides
-             *              valide = faux
+             *              Sortir
              *          Sinon
-             *              valide = faux
-             *      Tant que valide = vrai
-             *
-             *  
-             *  
-             *  
-             *  Sinon
-             *      Faire
-             *          Si la case du haut est vide et qu'elle est dans les limites du plateau
-             *              Ajouter cette case à la liste des positions valides
-             *              valide = vrai
-             *          Sinon si la case du haut n'est pas vide et que la couleur est blanc
-             *              Ajouter cette case à la liste des positions valides
-             *              valide = faux
-             *          Sinon
-             *              valide = faux
-             *      Tant que valide = vrai
-             *      
-             *      Faire
-             *          Si la case du bas est vide et qu'elle est dans les limites du plateau
-             *              Ajouter cette case à la liste des positions valides
-             *              valide = vrai
-             *          Sinon si la case du bas n'est pas vide et que la couleur est blanc
-             *              Ajouter cette case à la liste des positions valides
-             *              valide = faux
-             *          Sinon
-             *              valide = faux
-             *      Tant que valide = vrai
-             *      
-             *      Faire
-             *          Si la case de droite est vide et qu'elle est dans les limites du plateau
-             *              Ajouter cette case à la liste des positions valides
-             *              valide = vrai
-             *          Sinon si la case de droite n'est pas vide et que la couleur est blanc
-             *              Ajouter cette case à la liste des positions valides
-             *              valide = faux
-             *          Sinon
-             *              valide = faux
-             *      Tant que valide = vrai
-             *      
-             *      Faire
-             *          Si la case de gauche est vide et qu'elle est dans les limites du plateau
-             *              Ajouter cette case à la liste des positions valides
-             *              valide = vrai
-             *          Sinon si la case de gauche n'est pas vide et que la couleur est blanc
-             *              Ajouter cette case à la liste des positions valides
-             *              valide = faux
-             *          Sinon
-             *              valide = faux
-             *      Tant que valide = vrai
+             *              Sortir
              */
 
             //throw new NotImplementedException();
             //Vous pouvez utiliser la ligne qui suit pour vérifier le comportement attendu
 
-            bool valide = false;
-            int x, y;
-            x = maPosition.X;
-            y = maPosition.Y;
             List<Coordonnee> maListe = new List<Coordonnee>();
+            ConsoleColor coulEnemi = (lePlateau[maPosition.X, maPosition.Y].couleurPiece != ConsoleColor.White) ? ConsoleColor.White : ConsoleColor.Black;
 
-            ColHaut(valide, x, y, lePlateau, maListe);
-            ColBas(valide, x, y, lePlateau, maListe);
-            LigneDroite(valide, x, y, lePlateau, maListe);
-            LigneGauche(valide, x, y, lePlateau, maListe);
+            ColHaut(lePlateau, maPosition, maListe, coulEnemi);
+            ColBas(lePlateau, maPosition, maListe, coulEnemi);
+            LigneDroite(lePlateau, maPosition, maListe, coulEnemi);
+            LigneGauche(lePlateau, maPosition, maListe, coulEnemi);
 
-
+            
             return maListe;
             //return base.DeterminerPositionsValides(lePlateau, maPosition);
         }
-        void ColHaut(bool valide, int x, int y, Piece[,] lePlateau, List<Coordonnee> maListe)
+
+        private static void ColHaut(Piece[,] lePlateau, Coordonnee maPosition, List<Coordonnee> mesPositions, ConsoleColor coulEnemi)
         {
-            do
+            for (int i = maPosition.Y - 1; i >= 0; i--)
             {
-                if (y - 1 > 0 && couleurPiece == ConsoleColor.White)
+                if (lePlateau[maPosition.X, i] is PieceVide)
                 {
-                    if (lePlateau[x, y - 1].GetType() == typeof(PieceVide))
-                    {
-                        maListe.Add(new Coordonnee(x, y - 1));
-                        valide = true;
-                        y--;
-                    }
-                    else if (lePlateau[x, y--].GetType() != typeof(PieceVide) && lePlateau[x, y - 1].couleurPiece == ConsoleColor.Black)
-                    {
-                        maListe.Add(new Coordonnee(x, y - 1));
-                        valide = false;
-                    }
-                    else
-                        valide = false;
+                    mesPositions.Add(new Coordonnee(maPosition.X, i));
                 }
-                else if (y - 1 > 0 && couleurPiece == ConsoleColor.Black)
+
+                if (lePlateau[maPosition.X, i].couleurPiece == coulEnemi)
                 {
-                    if (lePlateau[x, y - 1].GetType() == typeof(PieceVide))
-                    {
-                        maListe.Add(new Coordonnee(x, y - 1));
-                        valide = true;
-                        y--;
-                    }
-                    else if (lePlateau[x, y - 1].GetType() != typeof(PieceVide) && lePlateau[x, y - 1].couleurPiece == ConsoleColor.White)
-                    {
-                        maListe.Add(new Coordonnee(x, y - 1));
-                        valide = false;
-                    }
-                    else
-                        valide = false;
+                    mesPositions.Add(new Coordonnee(maPosition.X, i));
+                    break;
                 }
-            } while (valide);
+
+                if (lePlateau[maPosition.X, i].couleurPiece == lePlateau[maPosition.X, maPosition.Y].couleurPiece)
+                {
+                    break;
+                }
+            }
         }
-        void ColBas(bool valide, int x, int y, Piece[,] lePlateau, List<Coordonnee> maListe)
+        private static void ColBas(Piece[,] lePlateau, Coordonnee maPosition, List<Coordonnee> mesPositions, ConsoleColor coulEnemi)
         {
-            do
+            for (int i = maPosition.Y + 1; i <= 7; i++)
             {
-                if (y + 1 < 8 && couleurPiece == ConsoleColor.White)
+                if (lePlateau[maPosition.X, i] is PieceVide)
                 {
-                    if (lePlateau[x, y + 1].GetType() == typeof(PieceVide))
-                    {
-                        maListe.Add(new Coordonnee(x, y + 1));
-                        valide = true;
-                        y++;
-                    }
-                    else if (lePlateau[x, y + 1].GetType() != typeof(PieceVide) && lePlateau[x, y + 1].couleurPiece == ConsoleColor.Black)
-                    {
-                        maListe.Add(new Coordonnee(x, y + 1));
-                        valide = false;
-                    }
-                    else
-                        valide = false;
+                    mesPositions.Add(new Coordonnee(maPosition.X, i));
                 }
-                else if (y + 1 < 8 && couleurPiece == ConsoleColor.Black)
+
+                if (lePlateau[maPosition.X, i].couleurPiece == coulEnemi)
                 {
-                    if (lePlateau[x, y + 1].GetType() == typeof(PieceVide))
-                    {
-                        maListe.Add(new Coordonnee(x, y + 1));
-                        valide = true;
-                        y++;
-                    }
-                    else if (lePlateau[x, y + 1].GetType() != typeof(PieceVide) && lePlateau[x, y + 1].couleurPiece == ConsoleColor.White)
-                    {
-                        maListe.Add(new Coordonnee(x, y + 1));
-                        valide = false;
-                    }
-                    else
-                        valide = false;
+                    mesPositions.Add(new Coordonnee(maPosition.X, i));
+                    break;
                 }
-            } while (valide);
+
+                if (lePlateau[maPosition.X, i].couleurPiece == lePlateau[maPosition.X, maPosition.Y].couleurPiece)
+                {
+                    break;
+                }
+            }
         }
-        void LigneDroite(bool valide, int x, int y, Piece[,] lePlateau, List<Coordonnee> maListe)
+        private static void LigneDroite(Piece[,] lePlateau, Coordonnee maPosition, List<Coordonnee> mesPositions, ConsoleColor coulEnemi)
         {
-            do
+            for (int i = maPosition.X + 1; i <= 7; i++)
             {
-                if (x + 1 < 8 && couleurPiece == ConsoleColor.White)
+                if (lePlateau[i, maPosition.Y] is PieceVide)
                 {
-                    if (lePlateau[x + 1, y].GetType() == typeof(PieceVide))
-                    {
-                        maListe.Add(new Coordonnee(x + 1, y));
-                        valide = true;
-                        x++;
-                    }
-                    else if (lePlateau[x + 1, y].GetType() != typeof(PieceVide) && lePlateau[x + 1, y].couleurPiece == ConsoleColor.Black)
-                    {
-                        maListe.Add(new Coordonnee(x + 1, y));
-                        valide = false;
-                    }
-                    else
-                        valide = false;
+                    mesPositions.Add(new Coordonnee(i, maPosition.Y));
                 }
-                else if (x + 1 < 8 && couleurPiece == ConsoleColor.Black)
+
+                if (lePlateau[i, maPosition.Y].couleurPiece == coulEnemi)
                 {
-                    if (lePlateau[x + 1, y].GetType() == typeof(PieceVide))
-                    {
-                        maListe.Add(new Coordonnee(x + 1, y));
-                        valide = true;
-                        x++;
-                    }
-                    else if (lePlateau[x + 1, y].GetType() != typeof(PieceVide) && lePlateau[x + 1, y].couleurPiece == ConsoleColor.White)
-                    {
-                        maListe.Add(new Coordonnee(x + 1, y));
-                        valide = false;
-                    }
-                    else
-                        valide = false;
+                    mesPositions.Add(new Coordonnee(i, maPosition.Y));
+                    break;
                 }
-            } while (valide);
+
+                if (lePlateau[i, maPosition.Y].couleurPiece == lePlateau[maPosition.X, maPosition.Y].couleurPiece)
+                {
+                    break;
+                }
+            }
         }
-        void LigneGauche(bool valide, int x, int y, Piece[,] lePlateau, List<Coordonnee> maListe)
+        private static void LigneGauche(Piece[,] lePlateau, Coordonnee maPosition, List<Coordonnee> mesPositions, ConsoleColor coulEnemi)
         {
-            do
+            for (int i = maPosition.X - 1; i >= 0; i--)
             {
-                if (x - 1 > 0 && couleurPiece == ConsoleColor.White)
+                if (lePlateau[i, maPosition.Y] is PieceVide)
                 {
-                    if (lePlateau[x - 1, y].GetType() == typeof(PieceVide))
-                    {
-                        maListe.Add(new Coordonnee(x - 1, y));
-                        valide = true;
-                        x--;
-                    }
-                    else if (lePlateau[x - 1, y].GetType() != typeof(PieceVide) && lePlateau[x - 1, y].couleurPiece == ConsoleColor.Black)
-                    {
-                        maListe.Add(new Coordonnee(x - 1, y));
-                        valide = false;
-                    }
-                    else
-                        valide = false;
+                    mesPositions.Add(new Coordonnee(i, maPosition.Y));
                 }
-                else if (x - 1 > 0 && couleurPiece == ConsoleColor.Black)
+
+                if (lePlateau[i, maPosition.Y].couleurPiece == coulEnemi)
                 {
-                    if (lePlateau[x - 1, y].GetType() == typeof(PieceVide))
-                    {
-                        maListe.Add(new Coordonnee(x - 1, y));
-                        valide = true;
-                        x--;
-                    }
-                    else if (lePlateau[x - 1, y].GetType() != typeof(PieceVide) && lePlateau[x - 1, y].couleurPiece == ConsoleColor.White)
-                    {
-                        maListe.Add(new Coordonnee(x - 1, y));
-                        valide = false;
-                    }
-                    else
-                        valide = false;
+                    mesPositions.Add(new Coordonnee(i, maPosition.Y));
+                    break;
                 }
-            } while (valide);
+
+                if (lePlateau[i, maPosition.Y].couleurPiece == lePlateau[maPosition.X, maPosition.Y].couleurPiece)
+                {
+                    break;
+                }
+            }
         }
     }
 }

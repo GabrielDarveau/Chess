@@ -57,8 +57,11 @@ namespace Projet2Chess
         private static Coordonnee DemanderCoordonnees(string messageAAfficher)
         {
             string rep;
-            Console.WriteLine(messageAAfficher);
-            rep = Console.ReadLine();
+            do
+            {
+                Console.WriteLine(messageAAfficher);
+                rep = Console.ReadLine();
+            } while (rep.Length != 2);
             Coordonnee maCoord = DecortiquerCoordonnee(rep);
             return maCoord;
             //throw new NotImplementedException();
@@ -88,13 +91,14 @@ namespace Projet2Chess
 
             string caract1, caract2;
             int nb1 = 0, nb2 = 0;
-            bool valide, verif;
+            bool valide= false, verif = false;
 
             caract1 = coordonneeADecortiquer.Substring(0, 1).ToUpper();
             caract2 = coordonneeADecortiquer.Substring(1, 1);
             verif = coord1.TryGetValue(caract1, out nb1);
             valide = coord2.TryGetValue(caract2, out nb2);
-            if (verif && valide && coordonneeADecortiquer.Length == 2)
+            
+            if (verif && valide)
             {
                 return new Coordonnee(nb1, nb2);
             }
