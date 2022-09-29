@@ -45,15 +45,7 @@ namespace Projet2Chess
             cases.Add(new Coordonnee(maPosition.X-1, maPosition.Y));
             cases.Add(new Coordonnee(maPosition.X-1, maPosition.Y+1));
 
-
-            int mouvement = -1;
-            ConsoleColor couleur = ConsoleColor.Black;
-
-            if (this.couleurPiece == ConsoleColor.White)
-            {
-                couleur = ConsoleColor.White;
-                mouvement = 1;
-            }
+            ConsoleColor couleur = this.couleurPiece;
 
             foreach (Coordonnee caseAutour in cases)
             {
