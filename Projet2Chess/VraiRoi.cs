@@ -12,7 +12,7 @@ namespace Projet2Chess
         { }
 
         /// <summary>
-        /// détermine toutes les cases valide pour le roi en regardant le plateau
+        /// Détermine toutes les cases valides pour le roi en regardant le plateau
         /// </summary>
         /// <param name="lePlateau"></param>
         /// <param name="maPosition"></param>
@@ -23,22 +23,22 @@ namespace Projet2Chess
              *  int mouvement = -1
              *  SI la couleur est blanche
              *      mouvement = 1
-             *  SI la position en haut N'est pas de la meme couleur
-             *      Ajouter cette position a la liste
-             *  SI la position au coin haut-droit N'est pas de la meme couleur
-             *      Ajouter cette position a la liste
-             *  SI la position à droite N'est pas de la meme couleur
-             *      Ajouter cette position a la liste
-             *  SI la position au coin bas-droite N'est pas de la meme couleur
-             *      Ajouter cette position a la liste
-             *  SI la position au bas N'est pas de la meme couleur
-             *      Ajouter cette position a la liste
-             *  SI la position au bas-gauche N'est pas de la meme couleur
-             *      Ajouter cette position a la liste
-             *  SI la position à gauche N'est pas de la meme couleur
-             *      Ajouter cette position a la liste
-             *  SI la position au coin haut-gauche N'est pas de la meme couleur
-             *      Ajouter cette position a la liste
+             *  SI la position en haut n'est pas de la même couleur
+             *      Ajouter cette position à la liste
+             *  SI la position au coin haut-droit n'est pas de la même couleur
+             *      Ajouter cette position à la liste
+             *  SI la position à droite n'est pas de la même couleur
+             *      Ajouter cette position à la liste
+             *  SI la position au coin bas-droite n'est pas de la même couleur
+             *      Ajouter cette position à la liste
+             *  SI la position au bas n'est pas de la même couleur
+             *      Ajouter cette position à la liste
+             *  SI la position au bas-gauche n'est pas de la même couleur
+             *      Ajouter cette position à la liste
+             *  SI la position à gauche n'est pas de la même couleur
+             *      Ajouter cette position à la liste
+             *  SI la position au coin haut-gauche n'est pas de la même couleur
+             *      Ajouter cette position à la liste
              */
 
             List<Coordonnee> coordonneesValides = new List<Coordonnee>();
