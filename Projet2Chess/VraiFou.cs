@@ -80,6 +80,8 @@ namespace Projet2Chess
             //Vous pouvez utiliser la ligne qui suit pour vérifier le comportement attendu
             List<Coordonnee> maListe = new List<Coordonnee>();
             ConsoleColor coulEnnemi;
+
+            //Obtenir la couleur ennemie
             if (lePlateau[maPosition.X, maPosition.Y].couleurPiece != ConsoleColor.White)
             {
                 coulEnnemi = ConsoleColor.White;
@@ -88,22 +90,37 @@ namespace Projet2Chess
             {
                 coulEnnemi = ConsoleColor.Black;
             }
+
+            //Appel des fonctions qui vérifient les déplacements
             HautDroite(lePlateau, maPosition, maListe, coulEnnemi);
             HautGauche(lePlateau, maPosition, maListe, coulEnnemi);
             BasDroite(lePlateau, maPosition, maListe, coulEnnemi);
             BasGauche(lePlateau, maPosition, maListe, coulEnnemi);
+
+            //Retour de la liste des déplacements
             return maListe;
 
             //return base.DeterminerPositionsValides(lePlateau, maPosition);
         }
-
-        private static void HautDroite(Piece[,] lePlateau, Coordonnee maPosition, List<Coordonnee> mesPositions, ConsoleColor coulEnnemi)
+        /// <summary>
+        /// Vérifier les déplacements vers la droite en haut
+        /// </summary>
+        /// <param name="lePlateau"></param>
+        /// <param name="maPosition"></param>
+        /// <param name="mesPositions"></param>
+        /// <param name="coulEnnemi"></param>
+        private void HautDroite(Piece[,] lePlateau, Coordonnee maPosition, List<Coordonnee> mesPositions, ConsoleColor coulEnnemi)
         {
             int nb = 1;
-            while (true)
+            bool valide = true;
+
+            //Boucler jusqu'à ce que la condition soit fausse et qu'il y ait une sortie
+            while (valide)
             {
                 int nb2 = maPosition.X + nb;
                 int nb3 = maPosition.Y - nb;
+
+                //Conditions pour obtenir les déplacements
                 if (nb2 <= 7 && nb3 >= 0)
                 {
                     if (lePlateau[nb2, nb3] is PieceVide)
@@ -119,20 +136,32 @@ namespace Projet2Chess
                     {
                         break;
                     }
-                    nb++;
-                    continue; //Le continue fait un saut dans les itérations selon la condition et continu dans la prochaine itération
+
+                    nb++; //Incrémentation de 1 le nb
+                    continue; //Le continue fait un saut dans les itérations selon la condition et continu dans la prochaine itération, donc n'exécute pas le break
                 }
                 break;
             }
         }
-
-        private static void HautGauche(Piece[,] lePlateau, Coordonnee maPosition, List<Coordonnee> mesPositions, ConsoleColor coulEnnemi)
+        /// <summary>
+        /// Vérifier les déplacements vers la gauche en haut
+        /// </summary>
+        /// <param name="lePlateau"></param>
+        /// <param name="maPosition"></param>
+        /// <param name="mesPositions"></param>
+        /// <param name="coulEnnemi"></param>
+        private void HautGauche(Piece[,] lePlateau, Coordonnee maPosition, List<Coordonnee> mesPositions, ConsoleColor coulEnnemi)
         {
             int nb = 1;
-            while (true)
+            bool valide = true;
+
+            //Boucler jusqu'à ce que la condition soit fausse et qu'il y ait une sortie
+            while (valide)
             {
                 int nb2 = maPosition.X - nb;
                 int nb3 = maPosition.Y - nb;
+
+                //Conditions pour obtenir les déplacements
                 if (nb2 >= 0 && nb3 >= 0)
                 {
                     if (lePlateau[nb2, nb3] is PieceVide)
@@ -148,19 +177,32 @@ namespace Projet2Chess
                     {
                         break;
                     }
-                    nb++;
-                    continue; //Le continue fait un saut dans les itérations selon la condition et continu dans la prochaine itération
+
+                    nb++; //Incrémentation de 1 le nb
+                    continue; //Le continue fait un saut dans les itérations selon la condition et continu dans la prochaine itération, donc n'exécute pas le break
                 }
                 break;
             }
         }
-        private static void BasDroite(Piece[,] lePlateau, Coordonnee maPosition, List<Coordonnee> mesPositions, ConsoleColor coulEnnemi)
+        /// <summary>
+        /// Vérifier les déplacements vers la droite en bas
+        /// </summary>
+        /// <param name="lePlateau"></param>
+        /// <param name="maPosition"></param>
+        /// <param name="mesPositions"></param>
+        /// <param name="coulEnnemi"></param>
+        private void BasDroite(Piece[,] lePlateau, Coordonnee maPosition, List<Coordonnee> mesPositions, ConsoleColor coulEnnemi)
         {
             int nb = 1;
-            while (true)
+            bool valide = true;
+
+            //Boucler jusqu'à ce que la condition soit fausse et qu'il y ait une sortie
+            while (valide)
             {
                 int nb2 = maPosition.X + nb;
                 int nb3 = maPosition.Y + nb;
+
+                //Conditions pour obtenir les déplacements
                 if (nb2 <= 7 && nb3 <= 7)
                 {
                     if (lePlateau[nb2, nb3] is PieceVide)
@@ -176,20 +218,32 @@ namespace Projet2Chess
                     {
                         break;
                     }
-                    nb++;
-                    continue; //Le continue fait un saut dans les itérations selon la condition et continu dans la prochaine itération
+
+                    nb++; //Incrémentation de 1 le nb
+                    continue; //Le continue fait un saut dans les itérations selon la condition et continu dans la prochaine itération, donc n'exécute pas le break
                 }
                 break;
             }
         }
-
-        private static void BasGauche(Piece[,] lePlateau, Coordonnee maPosition, List<Coordonnee> mesPositions, ConsoleColor coulEnnemi)
+        /// <summary>
+        /// Vérifier les déplacements vers la gauche en bas
+        /// </summary>
+        /// <param name="lePlateau"></param>
+        /// <param name="maPosition"></param>
+        /// <param name="mesPositions"></param>
+        /// <param name="coulEnnemi"></param>
+        private void BasGauche(Piece[,] lePlateau, Coordonnee maPosition, List<Coordonnee> mesPositions, ConsoleColor coulEnnemi)
         {
             int nb = 1;
-            while (true)
+            bool valide = true;
+
+            //Boucler jusqu'à ce que la condition soit fausse et qu'il y ait une sortie
+            while (valide)
             {
                 int nb2 = maPosition.X - nb;
                 int nb3 = maPosition.Y + nb;
+
+                //Conditions pour obtenir les déplacements
                 if (nb2 >= 0 && nb3 <= 7)
                 {
                     if (lePlateau[nb2, nb3] is PieceVide)
@@ -205,8 +259,9 @@ namespace Projet2Chess
                     {
                         break;
                     }
-                    nb++;
-                    continue; //Le continue fait un saut dans les itérations selon la condition et continu dans la prochaine itération
+
+                    nb++; //Incrémentation de 1 le nb
+                    continue; //Le continue fait un saut dans les itérations selon la condition et continu dans la prochaine itération, donc n'exécute pas le break
                 }
                 break;
             }
