@@ -105,11 +105,11 @@ namespace Projet2Chess
                 else if (lePlateau[maPosition.X, i].couleurPiece == coulEnnemi)
                 {
                     mesPositions.Add(new Coordonnee(maPosition.X, i));
-                    break;
+                    break; //Sortir
                 }
                 else if (lePlateau[maPosition.X, i].couleurPiece == lePlateau[maPosition.X, maPosition.Y].couleurPiece)
                 {
-                    break;
+                    break; //Sortir
                 }
             }
         }
@@ -133,11 +133,11 @@ namespace Projet2Chess
                 else if (lePlateau[maPosition.X, i].couleurPiece == coulEnnemi)
                 {
                     mesPositions.Add(new Coordonnee(maPosition.X, i));
-                    break;
+                    break; //Sortir
                 }
                 else if (lePlateau[maPosition.X, i].couleurPiece == lePlateau[maPosition.X, maPosition.Y].couleurPiece)
                 {
-                    break;
+                    break; //Sortir
                 }
             }
         }
@@ -161,11 +161,11 @@ namespace Projet2Chess
                 else if (lePlateau[i, maPosition.Y].couleurPiece == coulEnnemi)
                 {
                     mesPositions.Add(new Coordonnee(i, maPosition.Y));
-                    break;
+                    break; //Sortir
                 }
                 else if (lePlateau[i, maPosition.Y].couleurPiece == lePlateau[maPosition.X, maPosition.Y].couleurPiece)
                 {
-                    break;
+                    break; //Sortir
                 }
             }
         }
@@ -189,11 +189,11 @@ namespace Projet2Chess
                 else if (lePlateau[i, maPosition.Y].couleurPiece == coulEnnemi)
                 {
                     mesPositions.Add(new Coordonnee(i, maPosition.Y));
-                    break;
+                    break; //Sortir
                 }
                 else if (lePlateau[i, maPosition.Y].couleurPiece == lePlateau[maPosition.X, maPosition.Y].couleurPiece)
                 {
-                    break;
+                    break; //Sortir
                 }
             }
         }

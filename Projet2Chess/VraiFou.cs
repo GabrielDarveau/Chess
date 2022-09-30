@@ -123,24 +123,27 @@ namespace Projet2Chess
                 //Conditions pour obtenir les déplacements
                 if (nb2 <= 7 && nb3 >= 0)
                 {
+                    //Si case vide
                     if (lePlateau[nb2, nb3] is PieceVide)
                     {
                         mesPositions.Add(new Coordonnee(nb2, nb3));
                     }
+                    //Sinon si couleur ennemie
                     else if (lePlateau[nb2, nb3].couleurPiece == coulEnnemi)
                     {
                         mesPositions.Add(new Coordonnee(nb2, nb3));
-                        break;
+                        break; //Sortir
                     }
+                    //Sinon si alliée
                     else if (lePlateau[nb2, nb3].couleurPiece == lePlateau[maPosition.X, maPosition.Y].couleurPiece)
                     {
-                        break;
+                        break; //Sortir
                     }
 
                     nb++; //Incrémentation de 1 le nb
                     continue; //Le continue fait un saut dans les itérations selon la condition et continu dans la prochaine itération, donc n'exécute pas le break
                 }
-                break;
+                break; //Sortir
             }
         }
         /// <summary>
@@ -164,24 +167,27 @@ namespace Projet2Chess
                 //Conditions pour obtenir les déplacements
                 if (nb2 >= 0 && nb3 >= 0)
                 {
+                    //Si case vide
                     if (lePlateau[nb2, nb3] is PieceVide)
                     {
                         mesPositions.Add(new Coordonnee(nb2, nb3));
                     }
+                    //Sinon si couleur ennemie
                     else if (lePlateau[nb2, nb3].couleurPiece == coulEnnemi)
                     {
                         mesPositions.Add(new Coordonnee(nb2, nb3));
-                        break;
+                        break; //Sortir
                     }
+                    //Sinon si alliée
                     else if (lePlateau[nb2, nb3].couleurPiece == lePlateau[maPosition.X, maPosition.Y].couleurPiece)
                     {
-                        break;
+                        break; //Sortir
                     }
 
                     nb++; //Incrémentation de 1 le nb
                     continue; //Le continue fait un saut dans les itérations selon la condition et continu dans la prochaine itération, donc n'exécute pas le break
                 }
-                break;
+                break; //Sortir
             }
         }
         /// <summary>
@@ -205,24 +211,27 @@ namespace Projet2Chess
                 //Conditions pour obtenir les déplacements
                 if (nb2 <= 7 && nb3 <= 7)
                 {
+                    //Si case vide
                     if (lePlateau[nb2, nb3] is PieceVide)
                     {
                         mesPositions.Add(new Coordonnee(nb2, nb3));
                     }
+                    //Sinon si couleur ennemie
                     else if (lePlateau[nb2, nb3].couleurPiece == coulEnnemi)
                     {
                         mesPositions.Add(new Coordonnee(nb2, nb3));
-                        break;
+                        break; //Sortir
                     }
+                    //Sinon si alliée
                     else if (lePlateau[nb2, nb3].couleurPiece == lePlateau[maPosition.X, maPosition.Y].couleurPiece)
                     {
-                        break;
+                        break; //Sortir
                     }
 
                     nb++; //Incrémentation de 1 le nb
                     continue; //Le continue fait un saut dans les itérations selon la condition et continu dans la prochaine itération, donc n'exécute pas le break
                 }
-                break;
+                break; //Sortir
             }
         }
         /// <summary>
@@ -246,24 +255,27 @@ namespace Projet2Chess
                 //Conditions pour obtenir les déplacements
                 if (nb2 >= 0 && nb3 <= 7)
                 {
+                    //Si case vide
                     if (lePlateau[nb2, nb3] is PieceVide)
                     {
                         mesPositions.Add(new Coordonnee(nb2, nb3));
                     }
+                    //Sinon si couleur ennemie
                     else if (lePlateau[nb2, nb3].couleurPiece == coulEnnemi)
                     {
                         mesPositions.Add(new Coordonnee(nb2, nb3));
-                        break;
+                        break; //Sortir
                     }
+                    //Sinon si alliée
                     else if (lePlateau[nb2, nb3].couleurPiece == lePlateau[maPosition.X, maPosition.Y].couleurPiece)
                     {
-                        break;
+                        break; //Sortir
                     }
 
                     nb++; //Incrémentation de 1 le nb
                     continue; //Le continue fait un saut dans les itérations selon la condition et continu dans la prochaine itération, donc n'exécute pas le break
                 }
-                break;
+                break; //Sortir
             }
         }
     }
