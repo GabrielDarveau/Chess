@@ -97,6 +97,119 @@ namespace Projet2Chess
             //return base.DeterminerPositionsValides(lePlateau, maPosition);
         }
 
-        
+        private static void HautDroite(Piece[,] lePlateau, Coordonnee maPosition, List<Coordonnee> mesPositions, ConsoleColor coulEnnemi)
+        {
+            int nb = 1;
+            while (true)
+            {
+                int nb2 = maPosition.X + nb;
+                int nb3 = maPosition.Y - nb;
+                if (nb2 <= 7 && nb3 >= 0)
+                {
+                    if (lePlateau[nb2, nb3] is PieceVide)
+                    {
+                        mesPositions.Add(new Coordonnee(nb2, nb3));
+                    }
+                    else if (lePlateau[nb2, nb3].couleurPiece == coulEnnemi)
+                    {
+                        mesPositions.Add(new Coordonnee(nb2, nb3));
+                        break;
+                    }
+                    else if (lePlateau[nb2, nb3].couleurPiece == lePlateau[maPosition.X, maPosition.Y].couleurPiece)
+                    {
+                        break;
+                    }
+                    nb++;
+                    continue; //Le continue fait un saut dans les itérations selon la condition et continu dans la prochaine itération
+                }
+                break;
+            }
+        }
+
+        private static void HautGauche(Piece[,] lePlateau, Coordonnee maPosition, List<Coordonnee> mesPositions, ConsoleColor coulEnnemi)
+        {
+            int nb = 1;
+            while (true)
+            {
+                int nb2 = maPosition.X - nb;
+                int nb3 = maPosition.Y - nb;
+                if (nb2 >= 0 && nb3 >= 0)
+                {
+                    if (lePlateau[nb2, nb3] is PieceVide)
+                    {
+                        mesPositions.Add(new Coordonnee(nb2, nb3));
+                    }
+                    else if (lePlateau[nb2, nb3].couleurPiece == coulEnnemi)
+                    {
+                        mesPositions.Add(new Coordonnee(nb2, nb3));
+                        break;
+                    }
+                    else if (lePlateau[nb2, nb3].couleurPiece == lePlateau[maPosition.X, maPosition.Y].couleurPiece)
+                    {
+                        break;
+                    }
+                    nb++;
+                    continue; //Le continue fait un saut dans les itérations selon la condition et continu dans la prochaine itération
+                }
+                break;
+            }
+        }
+        private static void BasDroite(Piece[,] lePlateau, Coordonnee maPosition, List<Coordonnee> mesPositions, ConsoleColor coulEnnemi)
+        {
+            int nb = 1;
+            while (true)
+            {
+                int nb2 = maPosition.X + nb;
+                int nb3 = maPosition.Y + nb;
+                if (nb2 <= 7 && nb3 <= 7)
+                {
+                    if (lePlateau[nb2, nb3] is PieceVide)
+                    {
+                        mesPositions.Add(new Coordonnee(nb2, nb3));
+                    }
+                    else if (lePlateau[nb2, nb3].couleurPiece == coulEnnemi)
+                    {
+                        mesPositions.Add(new Coordonnee(nb2, nb3));
+                        break;
+                    }
+                    else if (lePlateau[nb2, nb3].couleurPiece == lePlateau[maPosition.X, maPosition.Y].couleurPiece)
+                    {
+                        break;
+                    }
+                    nb++;
+                    continue; //Le continue fait un saut dans les itérations selon la condition et continu dans la prochaine itération
+                }
+                break;
+            }
+        }
+
+        private static void BasGauche(Piece[,] lePlateau, Coordonnee maPosition, List<Coordonnee> mesPositions, ConsoleColor coulEnnemi)
+        {
+            int nb = 1;
+            while (true)
+            {
+                int nb2 = maPosition.X - nb;
+                int nb3 = maPosition.Y + nb;
+                if (nb2 >= 0 && nb3 <= 7)
+                {
+                    if (lePlateau[nb2, nb3] is PieceVide)
+                    {
+                        mesPositions.Add(new Coordonnee(nb2, nb3));
+                    }
+                    else if (lePlateau[nb2, nb3].couleurPiece == coulEnnemi)
+                    {
+                        mesPositions.Add(new Coordonnee(nb2, nb3));
+                        break;
+                    }
+                    else if (lePlateau[nb2, nb3].couleurPiece == lePlateau[maPosition.X, maPosition.Y].couleurPiece)
+                    {
+                        break;
+                    }
+                    nb++;
+                    continue; //Le continue fait un saut dans les itérations selon la condition et continu dans la prochaine itération
+                }
+                break;
+            }
+        }
     }
 }
