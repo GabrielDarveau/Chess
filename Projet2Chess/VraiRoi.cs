@@ -19,26 +19,11 @@ namespace Projet2Chess
         /// <returns></returns>
         public override List<Coordonnee> DeterminerPositionsValides(Piece[,] lePlateau, Coordonnee maPosition)
         {
-            /*  
-             *  int mouvement = -1
-             *  SI la couleur est blanche
-             *      mouvement = 1
-             *  SI la position en haut N'est pas de la meme couleur
-             *      Ajouter cette position a la liste
-             *  SI la position au coin haut-droit N'est pas de la meme couleur
-             *      Ajouter cette position a la liste
-             *  SI la position à droite N'est pas de la meme couleur
-             *      Ajouter cette position a la liste
-             *  SI la position au coin bas-droite N'est pas de la meme couleur
-             *      Ajouter cette position a la liste
-             *  SI la position au bas N'est pas de la meme couleur
-             *      Ajouter cette position a la liste
-             *  SI la position au bas-gauche N'est pas de la meme couleur
-             *      Ajouter cette position a la liste
-             *  SI la position à gauche N'est pas de la meme couleur
-             *      Ajouter cette position a la liste
-             *  SI la position au coin haut-gauche N'est pas de la meme couleur
-             *      Ajouter cette position a la liste
+            /*  Définir les positions autour du roi dans une liste
+             *  ConsoleColor couleur = la couleur du roi
+             *  POUR chaque position autour
+             *      SI la position n'est pas de la meme couleur
+             *         Ajouter cette position a la liste
              */
 
             List<Coordonnee> coordonneesValides = new List<Coordonnee>();
@@ -84,3 +69,7 @@ namespace Projet2Chess
         }
     }
 }
+
+
+
+
