@@ -1,0 +1,7 @@
+Paramètres: Liste des positions valides
+POUR chaque positions sur le plateau
+	POUR chaque position valides
+		SI la position est en dehors du tableau
+			Échec du test
+		SI la position est de la meme couleur
+			échec du test

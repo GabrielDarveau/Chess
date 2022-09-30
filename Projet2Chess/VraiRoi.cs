@@ -22,18 +22,19 @@ namespace Projet2Chess
             /*  Définir les positions autour du roi dans une liste
              *  ConsoleColor couleur = la couleur du roi
              *  POUR chaque position autour
-             *      SI la position n'est pas de la meme couleur
-             *         Ajouter cette position a la liste
+             *      SI la position n'est pas en dehors du tableau
+             *          SI la position n'est pas de la meme couleur
+             *              Ajouter cette position a la liste
              */
 
             List<Coordonnee> coordonneesValides = new List<Coordonnee>();
             //Ajoute toutes les cases autour du roi dans une liste
             List<Coordonnee> cases = new List<Coordonnee>();
+            cases.Add(new Coordonnee(maPosition.X, maPosition.Y-1));
             cases.Add(new Coordonnee(maPosition.X, maPosition.Y+1));
             cases.Add(new Coordonnee(maPosition.X+1, maPosition.Y+1));
             cases.Add(new Coordonnee(maPosition.X+1, maPosition.Y));
             cases.Add(new Coordonnee(maPosition.X+1, maPosition.Y-1));
-            cases.Add(new Coordonnee(maPosition.X, maPosition.Y-1));
             cases.Add(new Coordonnee(maPosition.X-1, maPosition.Y-1));
             cases.Add(new Coordonnee(maPosition.X-1, maPosition.Y));
             cases.Add(new Coordonnee(maPosition.X-1, maPosition.Y+1));
@@ -46,19 +47,15 @@ namespace Projet2Chess
                 VerifCase(caseAutour);
             }
 
-            //vérifie si une case est occuper par un allié, si non, la case est valide et est ajoutée à la liste
+            //vérifie si une case est occupée par un allié, si non, la case est valide et est ajoutée à la liste
             void VerifCase(Coordonnee caseAutour)
             {
-                try
+                if (caseAutour.X <= 7 && caseAutour.X >= 0 && caseAutour.Y <= 7 && caseAutour.Y >= 0)
                 {
-                    if (lePlateau[caseAutour.X,caseAutour.Y].couleurPiece != couleur)
+                    if (lePlateau[caseAutour.X, caseAutour.Y].couleurPiece != couleur)
                     {
                         coordonneesValides.Add(caseAutour);
                     }
-                }
-                catch (IndexOutOfRangeException e)
-                {
-                    
                 }
             }
             return coordonneesValides;
