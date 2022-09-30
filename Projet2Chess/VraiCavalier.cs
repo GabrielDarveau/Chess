@@ -13,8 +13,9 @@ namespace Projet2Chess
             /*  Définir les positions autour du cavalier dans une liste
              *  ConsoleColor couleur = la couleur du cavalier
              *  POUR chaque position autour
-             *      SI la position n'est pas de la meme couleur
-             *         Ajouter cette position a la liste
+             *      SI la position est a l'intérieur du plateau
+             *          SI la position n'est pas de la meme couleur
+             *              Ajouter cette position a la liste
              */
             List<Coordonnee> coordonneesValides = new List<Coordonnee>();
             //Ajoute toutes les cases ou le cavalier peut se rendre dans une liste
@@ -39,16 +40,12 @@ namespace Projet2Chess
             //vérifie si une case est occuper par un allié, si non, la case est valide et est ajoutée à la liste
             void VerifCase(Coordonnee caseAutour)
             {
-                try
+                if (caseAutour.X <= 7 && caseAutour.X >= 0 && caseAutour.Y <= 7 && caseAutour.Y >= 0)
                 {
                     if (lePlateau[caseAutour.X, caseAutour.Y].couleurPiece != couleur)
                     {
                         coordonneesValides.Add(caseAutour);
                     }
-                }
-                catch (IndexOutOfRangeException e)
-                {
-
                 }
             }
             return coordonneesValides;
