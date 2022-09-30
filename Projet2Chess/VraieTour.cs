@@ -63,6 +63,8 @@ namespace Projet2Chess
 
             List<Coordonnee> maListe = new List<Coordonnee>();
             ConsoleColor coulEnnemi;
+
+            //Obtenir la couleur ennemie
             if(lePlateau[maPosition.X, maPosition.Y].couleurPiece != ConsoleColor.White)
             {
                 coulEnnemi = ConsoleColor.White;
@@ -71,18 +73,31 @@ namespace Projet2Chess
             {
                 coulEnnemi = ConsoleColor.Black;
             }
+
+            //Appel des fonctions qui vérifient les déplacements
             ColHaut(lePlateau, maPosition, maListe, coulEnnemi);
             ColBas(lePlateau, maPosition, maListe, coulEnnemi);
             LigneDroite(lePlateau, maPosition, maListe, coulEnnemi);
             LigneGauche(lePlateau, maPosition, maListe, coulEnnemi);
+
+            //Retour de la liste des déplacements
             return maListe;
+
             //return base.DeterminerPositionsValides(lePlateau, maPosition);
         }
-
-        private static void ColHaut(Piece[,] lePlateau, Coordonnee maPosition, List<Coordonnee> mesPositions, ConsoleColor coulEnnemi)
+        /// <summary>
+        /// Vérifier les déplacements disponibles vers le haut
+        /// </summary>
+        /// <param name="lePlateau"></param>
+        /// <param name="maPosition"></param>
+        /// <param name="mesPositions"></param>
+        /// <param name="coulEnnemi"></param>
+        private void ColHaut(Piece[,] lePlateau, Coordonnee maPosition, List<Coordonnee> mesPositions, ConsoleColor coulEnnemi)
         {
+            //Boucler sur la colonne à partir de la position de la pièce
             for (int i = maPosition.Y - 1; i >= 0; i--)
             {
+                //Conditions pour obtenir les déplacements
                 if (lePlateau[maPosition.X, i] is PieceVide)
                 {
                     mesPositions.Add(new Coordonnee(maPosition.X, i));
@@ -98,10 +113,19 @@ namespace Projet2Chess
                 }
             }
         }
-        private static void ColBas(Piece[,] lePlateau, Coordonnee maPosition, List<Coordonnee> mesPositions, ConsoleColor coulEnnemi)
+        /// <summary>
+        /// Vérifier les déplacements disponibles vers le bas
+        /// </summary>
+        /// <param name="lePlateau"></param>
+        /// <param name="maPosition"></param>
+        /// <param name="mesPositions"></param>
+        /// <param name="coulEnnemi"></param>
+        private void ColBas(Piece[,] lePlateau, Coordonnee maPosition, List<Coordonnee> mesPositions, ConsoleColor coulEnnemi)
         {
+            //Boucler sur la colonne à partir de la position de la pièce
             for (int i = maPosition.Y + 1; i <= 7; i++)
             {
+                //Conditions pour obtenir les déplacements
                 if (lePlateau[maPosition.X, i] is PieceVide)
                 {
                     mesPositions.Add(new Coordonnee(maPosition.X, i));
@@ -117,10 +141,19 @@ namespace Projet2Chess
                 }
             }
         }
-        private static void LigneDroite(Piece[,] lePlateau, Coordonnee maPosition, List<Coordonnee> mesPositions, ConsoleColor coulEnnemi)
+        /// <summary>
+        /// Vérifier les déplacements disponibles vers la droite
+        /// </summary>
+        /// <param name="lePlateau"></param>
+        /// <param name="maPosition"></param>
+        /// <param name="mesPositions"></param>
+        /// <param name="coulEnnemi"></param>
+        private void LigneDroite(Piece[,] lePlateau, Coordonnee maPosition, List<Coordonnee> mesPositions, ConsoleColor coulEnnemi)
         {
+            //Boucler sur la ligne à partir de la position de la pièce
             for (int i = maPosition.X + 1; i <= 7; i++)
             {
+                //Conditions pour obtenir les déplacements
                 if (lePlateau[i, maPosition.Y] is PieceVide)
                 {
                     mesPositions.Add(new Coordonnee(i, maPosition.Y));
@@ -136,10 +169,19 @@ namespace Projet2Chess
                 }
             }
         }
-        private static void LigneGauche(Piece[,] lePlateau, Coordonnee maPosition, List<Coordonnee> mesPositions, ConsoleColor coulEnnemi)
+        /// <summary>
+        /// Vérifier déplacements vers la gauche
+        /// </summary>
+        /// <param name="lePlateau"></param>
+        /// <param name="maPosition"></param>
+        /// <param name="mesPositions"></param>
+        /// <param name="coulEnnemi"></param>
+        private void LigneGauche(Piece[,] lePlateau, Coordonnee maPosition, List<Coordonnee> mesPositions, ConsoleColor coulEnnemi)
         {
+            //Boucler sur la ligne à partir de la position de la pièce
             for (int i = maPosition.X - 1; i >= 0; i--)
             {
+                //Conditions pour obtenir les déplacements
                 if (lePlateau[i, maPosition.Y] is PieceVide)
                 {
                     mesPositions.Add(new Coordonnee(i, maPosition.Y));

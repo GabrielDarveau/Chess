@@ -90,8 +90,8 @@ namespace Projet2Chess
             coord2.Add("8", 7);
 
             string caract1, caract2;
-            int nb1 = 0, nb2 = 0;
-            bool valide= false, verif = false;
+            int nb1, nb2;
+            bool valide, verif;
 
             caract1 = coordonneeADecortiquer.Substring(0, 1).ToUpper();
             caract2 = coordonneeADecortiquer.Substring(1, 1);
